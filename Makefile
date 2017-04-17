@@ -5,15 +5,17 @@
 CFLAGS=-Wall `pkg-config --cflags --libs gtk+-3.0` -export-dynamic
 
 all:
-	gcc -o gtkshutdown src/main.c src/callbacks.c $(CFLAGS)
+	mkdir -p build
+	cp src/window_main.glade build/
+	gcc -o build/gtkshutdown src/main.c src/callbacks.c $(CFLAGS)
 
 run: all
-	./gtkshutdown
+	cd build; ./gtkshutdown
 
 rebuild: clean all
 	
 clean:
-	rm -rf gtkshutdown
+	rm -rf build
 
 add: clean
 	git add .

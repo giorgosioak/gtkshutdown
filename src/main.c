@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
     // add glade files
     builder = gtk_builder_new();
-    gtk_builder_add_from_file (builder, "/home/george/Projects/ShutdownManagerForGnome/glade-files/window_main.glade", NULL);
+    gtk_builder_add_from_file (builder, "window_main.glade", NULL);
 
     // get window_main widget
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
