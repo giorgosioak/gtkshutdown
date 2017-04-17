@@ -8,6 +8,8 @@ all:
 	mkdir -p build
 	cp src/window_main.glade build/
 	gcc -o build/gtkshutdown src/main.c src/callbacks.c $(CFLAGS)
+	glib-compile-resources --sourcedir=src src/gtkshutdown.gresource.xml
+	mv src/gtkshutdown.gresource build/
 
 run: all
 	cd build; ./gtkshutdown
