@@ -17,6 +17,7 @@
  */
 
 #include <gtk/gtk.h>
+#include "callbacks.h"
 
 int main(int argc, char *argv[])
 {
@@ -34,6 +35,7 @@ int main(int argc, char *argv[])
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
 
     // connect auto signal
+    /* can't find a way to add buttons signals... :/ possible_fix=http://blog.borovsak.si/2009/09/glade3-tutorial-6-signals.html */
     gtk_builder_connect_signals(builder, NULL);
 
     g_object_unref(builder);
