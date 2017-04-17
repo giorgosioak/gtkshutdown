@@ -4,13 +4,13 @@
 void logout_clicked_cb (GtkButton *logout, gpointer user_data)
 {
     //g_print("clicked\n");
-    system("gnome-session-quit");
+    system("gnome-session-quit --no-promt");
 }
 
 // called when restart button clicked
 void restart_clicked_cb (GtkButton *restart, gpointer user_data)
 {
-    system("shutdown --reboot");
+    system("shutdown now --reboot");
 }
 
 // called when shutdown button clicked
