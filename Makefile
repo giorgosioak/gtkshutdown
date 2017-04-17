@@ -6,10 +6,10 @@ CFLAGS=-Wall `pkg-config --cflags --libs gtk+-3.0` -export-dynamic
 
 all:
 	mkdir -p build
-	cp src/window_main.glade build/
-	gcc -o build/gtkshutdown src/main.c src/callbacks.c $(CFLAGS)
-	glib-compile-resources --sourcedir=src src/gtkshutdown.gresource.xml
-	mv src/gtkshutdown.gresource build/
+
+	glib-compile-resources --sourcedir=data --generate-source data/gtkshutdown.gresource.xml
+
+	gcc -o build/gtkshutdown src/main.c src/callbacks.c data/gtkshutdown.c $(CFLAGS)
 
 run: all
 	cd build; ./gtkshutdown
@@ -17,7 +17,7 @@ run: all
 rebuild: clean all
 	
 clean:
-	rm -rf build
+	rm -rf build data/gtkshutdown.c
 
 add: clean
 	git add .
