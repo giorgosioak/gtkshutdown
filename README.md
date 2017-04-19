@@ -7,6 +7,8 @@ A Shutdown Manager based on GTK+ 3
 
 #### Compile: ####
 
+Ubuntu: $<code>sudo apt install libgtk-3-dev</code>
+
 $<code>make</code>
 
 #### Run: ####
@@ -20,7 +22,9 @@ $<code>make run</code>  or  $<code>cd build; ./gtkshutdown</code>
 * Uses GResource to be portable
 
 ## Wishlist ##
+
 * Shedule timer for shutdown and restart
 
 ## Developers ##
+
 George Ioakeimidis <[giorgosioak95 at gmail.com](mailto:giorgosioak95@gmail.com?Subject=gtkshutdown)>
