@@ -4,7 +4,7 @@
 void logout_clicked_cb (GtkButton *logout, gpointer user_data)
 {
     //g_print("clicked\n");
-    system("gnome-session-quit --no-promt");
+    system("gnome-session-quit --logout --force");
 }
 
 // called when restart button clicked
