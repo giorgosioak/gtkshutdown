@@ -16,4 +16,11 @@ $<code>make run</code>  or  $<code>cd build; ./gtkshutdown</code>
 
 ## Notes ##
 
-Logout is working only for GNOME session (wishlist:support more d.e.)
+* Supports all desktop enviroments that can run GTK+ 3.
+* Uses GResource to be portable
+
+## Wishlist ##
+* Shedule timer for shutdown and restart
+
+## Developers ##
+George Ioakeimidis <[giorgosioak95 at gmail.com](mailto:giorgosioak95@gmail.com?Subject=gtkshutdown)>
