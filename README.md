@@ -7,7 +7,7 @@ A Shutdown Manager based on GTK+ 3
 
 #### Compile: ####
 
-Ubuntu: $<code>sudo apt install libgtk-3-dev</code>
+Ubuntu dependency: $<code>sudo apt install libgtk-3-dev</code>
 
 $<code>make</code>
 
