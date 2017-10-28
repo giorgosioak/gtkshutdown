@@ -37,3 +37,9 @@ void shutdown_clicked_cb (GtkButton *shutdown, gpointer user_data)
 {
     system("shutdown now");
 }
+
+// called when timer button clicked
+void timer_clicked_cb (GtkButton *shutdown, gpointer user_data)
+{
+    //system("shutdown now");
+}
