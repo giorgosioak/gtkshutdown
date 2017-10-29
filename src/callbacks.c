@@ -47,7 +47,7 @@ void timer_clicked_cb (GtkButton *shutdown, gpointer user_data)
 // called when timer check button is toggled
 void enable_options (GtkWidget *timer, GtkWidget *timer_options)
 {
-	if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(timer)))
+	if( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer) ) )
 	{
 		gtk_widget_set_sensitive(timer_options,1);
 	} 
