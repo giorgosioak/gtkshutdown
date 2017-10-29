@@ -30,3 +30,6 @@ void shutdown_clicked_cb (GtkButton *shutdown, gpointer user_data);
 
 // called when shutdown button clicked
 void timer_clicked_cb (GtkButton *shutdown, gpointer user_data);
+
+// called when timer check button is toggled
+void enable_options (GtkWidget *timer, GtkWidget *timer_options);
