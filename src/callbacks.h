@@ -23,10 +23,10 @@
 void logout_clicked_cb (GtkButton *logout, gpointer user_data);
 
 // called when restart button clicked
-void restart_clicked_cb (GtkButton *restart, gpointer user_data);
+void restart_clicked_cb (GtkButton *restart, GtkWidget *timer);
 
 // called when shutdown button clicked
-void shutdown_clicked_cb (GtkButton *shutdown, gpointer user_data);
+void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer);
 
 // called when shutdown button clicked
 void timer_clicked_cb (GtkButton *shutdown, gpointer user_data);

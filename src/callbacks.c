@@ -27,15 +27,29 @@ void logout_clicked_cb (GtkButton *logout, gpointer user_data)
 }
 
 // called when restart button clicked
-void restart_clicked_cb (GtkButton *restart, gpointer user_data)
+void restart_clicked_cb (GtkButton *restart, GtkWidget *timer)
 {
-    system("shutdown now --reboot");
+	// If timer is checked
+    if ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer) ) )
+	{
+		g_print("TIMER ACTIVE\n");
+	} else {
+		// If timer is not checked
+	    system("shutdown now --reboot");
+	}
 }
 
 // called when shutdown button clicked
-void shutdown_clicked_cb (GtkButton *shutdown, gpointer user_data)
+void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer)
 {
-    system("shutdown now");
+	// If timer is checked
+	if ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer) ) )
+	{
+		g_print("TIMER ACTIVE\n");
+	} else {
+		// If timer is not checked
+	    system("shutdown now");
+	}
 }
 
 // called when timer button clicked
