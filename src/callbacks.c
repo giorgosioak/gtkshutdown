@@ -49,10 +49,10 @@ void enable_options (GtkWidget *timer, GtkWidget *timer_options)
 {
 	if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(timer)))
 	{
-		gtk_widget_show(timer_options);
+		gtk_widget_set_sensitive(timer_options,1);
 	} 
 	else
 	{
-		gtk_widget_hide(timer_options);
+		gtk_widget_set_sensitive(timer_options,0);
 	}
 }
