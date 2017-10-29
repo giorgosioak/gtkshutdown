@@ -1,3 +1,4 @@
 build/
 data/gtkshutdown.c
 data/#window_main.glade#
+data/window_main.glade~
