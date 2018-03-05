@@ -1,7 +1,7 @@
 # gtkshutdown #
 A Shutdown Manager based on GTK+ 3
 
-![Screenshot of version 0.2](https://i.imgur.com/p46zrHx.png)
+![Screenshot of version 0.2](https://i.imgur.com/hmmMu0Z.png)
 
 ## Building ##
 
