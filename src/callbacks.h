@@ -16,17 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
-#include <stdlib.h>
-
 // called when logout button clicked
 void logout_clicked_cb (GtkButton *logout, gpointer user_data);
 
 // called when restart button clicked
-void restart_clicked_cb (GtkButton *restart, GtkWidget *timer);
+void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box);
 
 // called when shutdown button clicked
-void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer);
+void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box);
 
 // called when shutdown button clicked
 void timer_clicked_cb (GtkButton *shutdown, gpointer user_data);
