@@ -83,7 +83,7 @@
                 <property name="image">restart_img</property>
                 <property name="image_position">top</property>
                 <property name="always_show_image">True</property>
-                <signal name="clicked" handler="restart_clicked_cb" object="timer" swapped="no"/>
+                <signal name="clicked" handler="restart_clicked_cb" object="timer_box" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
