@@ -120,6 +120,8 @@
           <object class="GtkBox" id="timer_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkCheckButton" id="timer">
@@ -282,6 +284,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="padding">5</property>
             <property name="position">1</property>
           </packing>
         </child>
