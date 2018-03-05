@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.3 -->
+<!-- Generated with glade 3.20.4 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkAdjustment" id="hours120">
@@ -100,7 +100,7 @@
                 <property name="image">shutdown_img</property>
                 <property name="image_position">top</property>
                 <property name="always_show_image">True</property>
-                <signal name="clicked" handler="shutdown_clicked_cb" object="timer" swapped="no"/>
+                <signal name="clicked" handler="shutdown_clicked_cb" object="timer_box" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -117,13 +117,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="GtkBox" id="timer_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkCheckButton" id="timer">
                 <property name="label" translatable="yes">Use timer</property>
+                <property name="name">timer</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
@@ -138,12 +139,14 @@
             </child>
             <child>
               <object class="GtkGrid" id="timer_options">
+                <property name="name">timer_options</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <child>
                   <object class="GtkRadioButton" id="radio_in">
                     <property name="label" translatable="yes">in </property>
+                    <property name="name">radio_in</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -159,6 +162,7 @@
                 <child>
                   <object class="GtkRadioButton" id="radio_at">
                     <property name="label" translatable="yes">at </property>
+                    <property name="name">radio_at</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -205,6 +209,7 @@
                 </child>
                 <child>
                   <object class="GtkSpinButton" id="in_hours">
+                    <property name="name">in_hours</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="adjustment">hours120</property>
@@ -217,6 +222,7 @@
                 </child>
                 <child>
                   <object class="GtkSpinButton" id="in_minutes">
+                    <property name="name">in_minutes</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
@@ -232,6 +238,7 @@
                 </child>
                 <child>
                   <object class="GtkSpinButton" id="at_hours">
+                    <property name="name">at_hours</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="adjustment">hours23</property>
@@ -243,6 +250,7 @@
                 </child>
                 <child>
                   <object class="GtkSpinButton" id="at_minutes">
+                    <property name="name">at_minutes</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="adjustment">minutes_at</property>
