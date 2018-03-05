@@ -1,4 +1,4 @@
-/* callbacks.h
+/* utilities.h
  *
  * Copyright (C) 2017 George Ioakeimidis
  *
@@ -16,17 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// called when logout button clicked
-void logout_clicked_cb (GtkButton *logout, gpointer user_data);
+// transform hours and minutes to shutdown options format
+char* get_shutdown_timer_options (GtkWidget *timer_box);
 
-// called when restart button clicked
-void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box);
-
-// called when shutdown button clicked
-void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box);
-
-// called when shutdown button clicked
-void timer_clicked_cb (GtkButton *shutdown, gpointer user_data);
-
-// called when timer check button is toggled
-void enable_options (GtkWidget *timer, GtkWidget *timer_options);
+/* find child in container
+ * thanks to Darius Kucinskas ( @dkucinskas ) */
+GtkWidget* find_child(GtkWidget* parent, const gchar* name);
