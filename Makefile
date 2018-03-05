@@ -9,7 +9,7 @@ all:
 
 	glib-compile-resources --sourcedir=data --generate-source data/gtkshutdown.gresource.xml
 
-	gcc -o build/gtkshutdown src/main.c src/callbacks.c data/gtkshutdown.c $(CFLAGS)
+	gcc -o build/gtkshutdown src/main.c src/callbacks.c src/utilities.c data/gtkshutdown.c $(CFLAGS)
 
 run: all
 	cd build; ./gtkshutdown
