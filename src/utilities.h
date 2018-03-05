@@ -16,7 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+// transform hours and minutes to shutdown options format
+char* get_shutdown_timer_options (GtkWidget *timer_box);
 
 /* find child in container
  * thanks to Darius Kucinskas ( @dkucinskas ) */

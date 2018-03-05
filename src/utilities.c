@@ -16,7 +16,63 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <gtk/gtk.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "utilities.h"
+
+// transform hours and minutes to shutdown options format
+char* get_shutdown_timer_options (GtkWidget *timer_box){
+
+    char* ret = malloc( 64 * sizeof(char) );        memset(ret, 0, 64);
+    char* hours = malloc( 20 * sizeof(char) );      memset(hours, 0, 20);
+    char* minutes = malloc( 20 * sizeof(char) );    memset(minutes, 0, 20);
+
+
+    // Get (GtkGrid) timer_options
+    GtkWidget *timer_options = find_child(timer_box,"timer_options");
+
+    // Get (GtkRadioButton) radio_in
+    GtkWidget *radio_in = find_child(timer_options,"radio_in");
+
+    // Get hours and minutes values from GtkSpinButton
+    int in_hours = gtk_spin_button_get_value( (GtkSpinButton *) find_child(timer_options,"in_hours"));
+    int in_minutes = gtk_spin_button_get_value( (GtkSpinButton *) find_child(timer_options,"in_minutes"));
+    int at_hours = gtk_spin_button_get_value( (GtkSpinButton *) find_child(timer_options,"at_hours"));
+    int at_minutes = gtk_spin_button_get_value( (GtkSpinButton *) find_child(timer_options,"at_minutes"));
+
+
+    // Check if radio_in is active. If radio_in is not active then radio_at is active
+    if ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(radio_in) ) )
+    {
+        // g_print("radio_in ACTIVE ~> %d hours : %d minutes\n", in_hours, in_minutes );
+
+        in_minutes = in_hours * 60 + in_minutes;
+
+        sprintf(minutes, "%d", in_minutes);
+
+        // create +m format
+        ret = strdup("+");
+        strncat(ret, minutes, sizeof ret - strlen(ret));
+        
+    } else {
+
+        // g_print("radio_at ACTIVE ~> %d hours : %d minutes\n", at_hours, at_minutes );
+
+        sprintf(hours, "%d", at_hours);
+        sprintf(minutes, "%d", at_minutes);
+
+        // create hh:mm format
+        ret = strdup(hours);
+        strncat(ret, ":", sizeof ret - strlen(ret));
+        strncat(ret, minutes, sizeof ret - strlen(ret));
+        
+    }
+
+    return ret;
+
+}
 
 // find child in container
 GtkWidget* find_child(GtkWidget* parent, const gchar* name)
