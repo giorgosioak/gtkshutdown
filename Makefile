@@ -2,7 +2,7 @@
 # This is a makefile for gtkshutdown
 # URL < https://github.com/giorgosioak/gtkshutdown >
 
-CFLAGS=-Wall `pkg-config --cflags --libs gtk+-3.0` -export-dynamic
+CFLAGS=-Wall `pkg-config --cflags --libs gtk+-3.0` -export-dynamic -no-pie
 
 all:
 	mkdir -p build
