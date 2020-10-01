@@ -17,22 +17,21 @@
  */
 
 #include <gtk/gtk.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "callbacks.h"
 #include "utilities.h"
 
 // called when logout button clicked
-void logout_clicked_cb (GtkButton *logout, gpointer user_data)
-{
+void logout_clicked_cb (GtkButton *logout, gpointer user_data) {
     //g_print("clicked\n");
     //system("gnome-session-quit --logout --force");
 	system("kill -9 -1");
 }
 
 // called when restart button clicked
-void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box)
-{
+void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box) {
 	
 	char* options = malloc( 64 * sizeof(char) );
 	char* command = malloc( 80 * sizeof(char) );
@@ -41,15 +40,12 @@ void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box)
 	GtkWidget *timer = find_child(timer_box,"timer");
 
 	// If timer is checked
-	if ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer) ) )
-	{
-		options = strdup(get_shutdown_timer_options(timer_box));
-
-        command = strdup("shutdown -r ");
-        strncat(command, options, sizeof command - strlen(command));
-
+	if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer))) {
+		options = get_shutdown_timer_options(timer_box);
+		g_assert(options);
+		snprintf(command, sizeof(command), "shutdown -r %s", options);
+		g_free(options);
         system(command);
-
 	} else {
 		// If timer is not checked
 		system("shutdown now --reboot");
@@ -57,8 +53,7 @@ void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box)
 }
 
 // called when shutdown button clicked
-void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box)
-{
+void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
 
 	char* options = malloc( 64 * sizeof(char) );
 	char* command = malloc( 80 * sizeof(char) );
@@ -67,15 +62,12 @@ void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box)
 	GtkWidget *timer = find_child(timer_box,"timer");
 
 	// If timer is checked
-	if ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer) ) )
-	{
-		options = strdup(get_shutdown_timer_options(timer_box));
-
-        command = strdup("shutdown ");
-        strncat(command, options, sizeof command - strlen(command));
-
+	if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer))) {
+		options = get_shutdown_timer_options(timer_box);
+		g_assert(options);
+		snprintf(command, sizeof(command), "shutdown %s", options);
+		g_free(options);
         system(command);
-
 	} else {
 		// If timer is not checked
 		system("shutdown now");
@@ -83,20 +75,15 @@ void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box)
 }
 
 // called when timer button clicked
-void timer_clicked_cb (GtkButton *shutdown, gpointer user_data)
-{
+void timer_clicked_cb (GtkButton *shutdown, gpointer user_data) {
     //system("shutdown now");
 }
 
 // called when timer check button is toggled
-void enable_options (GtkWidget *timer, GtkWidget *timer_options)
-{
-	if( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer) ) )
-	{
+void enable_options (GtkWidget *timer, GtkWidget *timer_options) {
+	if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer))) {
 		gtk_widget_set_sensitive(timer_options,1);
-	} 
-	else
-	{
+	} else {
 		gtk_widget_set_sensitive(timer_options,0);
 	}
 }

@@ -44,39 +44,15 @@ char* get_shutdown_timer_options (GtkWidget *timer_box){
 
 
     // Check if radio_in is active. If radio_in is not active then radio_at is active
-    if ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(radio_in) ) )
-    {
-        // g_print("radio_in ACTIVE ~> %d hours : %d minutes\n", in_hours, in_minutes );
-
-        in_minutes = in_hours * 60 + in_minutes;
-
-        sprintf(minutes, "%d", in_minutes);
-
-        // create +m format
-        ret = strdup("+");
-        strncat(ret, minutes, sizeof ret - strlen(ret));
-        
+    if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(radio_in))) {
+        return g_strdup_printf("+%d", in_hours * 60 + in_minutes);
     } else {
-
-        // g_print("radio_at ACTIVE ~> %d hours : %d minutes\n", at_hours, at_minutes );
-
-        sprintf(hours, "%d", at_hours);
-        sprintf(minutes, "%d", at_minutes);
-
-        // create hh:mm format
-        ret = strdup(hours);
-        strncat(ret, ":", sizeof ret - strlen(ret));
-        strncat(ret, minutes, sizeof ret - strlen(ret));
-        
+        return g_strdup_printf("%d:%d", at_hours, at_minutes);
     }
-
-    return ret;
-
 }
 
 // find child in container
-GtkWidget* find_child(GtkWidget* parent, const gchar* name)
-{
+GtkWidget* find_child(GtkWidget* parent, const gchar* name) {
     if (g_strcasecmp(gtk_widget_get_name((GtkWidget*)parent), (gchar*)name) == 0) { 
         return parent;
     }
