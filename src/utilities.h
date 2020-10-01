@@ -1,3 +1,5 @@
+#ifndef UTILITIES_H
+#define UTILITIES_H
 /* utilities.h
  *
  * Copyright (C) 2017 George Ioakeimidis
@@ -22,3 +24,4 @@ char* get_shutdown_timer_options (GtkWidget *timer_box);
 /* find child in container
  * thanks to Darius Kucinskas ( @dkucinskas ) */
 GtkWidget* find_child(GtkWidget* parent, const gchar* name);
+#endif

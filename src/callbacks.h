@@ -1,3 +1,5 @@
+#ifndef CALLBACKS_H
+#define CALLBACKS_H
 /* callbacks.h
  *
  * Copyright (C) 2017 George Ioakeimidis
@@ -30,3 +32,4 @@ void timer_clicked_cb (GtkButton *shutdown, gpointer user_data);
 
 // called when timer check button is toggled
 void enable_options (GtkWidget *timer, GtkWidget *timer_options);
+#endif
