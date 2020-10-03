@@ -23,6 +23,9 @@
 #include "callbacks.h"
 #include "utilities.h"
 
+size_t OPTIONS_SIZE = 64 * sizeof(char);
+size_t COMMAND_SIZE = 80 * sizeof(char);
+
 // called when logout button clicked
 void logout_clicked_cb (GtkButton *logout, gpointer user_data) {
     //g_print("clicked\n");
@@ -33,8 +36,8 @@ void logout_clicked_cb (GtkButton *logout, gpointer user_data) {
 // called when restart button clicked
 void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box) {
 	
-	char* options = malloc( 64 * sizeof(char) );
-	char* command = malloc( 80 * sizeof(char) );
+	char* options = malloc(OPTIONS_SIZE);
+	char* command = malloc(COMMAND_SIZE);
 
 	// Get timer
 	GtkWidget *timer = find_child(timer_box,"timer");
@@ -43,20 +46,21 @@ void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box) {
 	if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer))) {
 		options = get_shutdown_timer_options(timer_box);
 		g_assert(options);
-		snprintf(command, sizeof(command), "shutdown -r %s", options);
+		snprintf(command, COMMAND_SIZE, "shutdown -r %s", options);
 		g_free(options);
         system(command);
 	} else {
 		// If timer is not checked
 		system("shutdown now --reboot");
 	}
+	g_free(command);
 }
 
 // called when shutdown button clicked
 void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
 
-	char* options = malloc( 64 * sizeof(char) );
-	char* command = malloc( 80 * sizeof(char) );
+	char* options = malloc(OPTIONS_SIZE);
+	char* command = malloc(COMMAND_SIZE);
 
 	// Get timer
 	GtkWidget *timer = find_child(timer_box,"timer");
@@ -65,13 +69,14 @@ void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
 	if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer))) {
 		options = get_shutdown_timer_options(timer_box);
 		g_assert(options);
-		snprintf(command, sizeof(command), "shutdown %s", options);
+		snprintf(command, COMMAND_SIZE, "shutdown %s", options);
 		g_free(options);
         system(command);
 	} else {
 		// If timer is not checked
 		system("shutdown now");
 	}
+	g_free(command);
 }
 
 // called when timer button clicked
