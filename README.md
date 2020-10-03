@@ -7,7 +7,7 @@ A Shutdown Manager based on GTK+ 3
 
 #### Compile: ####
 
-Ubuntu/Debian dependency: $<code>sudo apt install libgtk-3-dev</code>
+Ubuntu/Debian dependency: $<code>sudo apt install libgtk-3-dev libnotify-dev libcanberra-dev</code>
 
 $<code>make</code>
 
@@ -25,10 +25,9 @@ $<code>make run</code>  or  $<code>cd build; ./gtkshutdown</code>
 
 * Logout, Restart, Shutdown
 * Shedule timer for shutdown and restart
+* Notification with alert sound when shutdown with timer
 
-## Wishlist ##
-
-* Notification when shutdown with timer
+*In some distributions you might have to: Enable "Event Sounds" in Settings Manager -> Appearance -> Settings*
 
 *[Submit your idea](https://github.com/giorgosioak/gtkshutdown/issues/new)*
 

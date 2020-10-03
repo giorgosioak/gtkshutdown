@@ -17,6 +17,7 @@
  */
 
 #include <gtk/gtk.h>
+#include <libnotify/notify.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,6 +31,7 @@ size_t COMMAND_SIZE = 80 * sizeof(char);
 void logout_clicked_cb (GtkButton *logout, gpointer user_data) {
     //g_print("clicked\n");
     //system("gnome-session-quit --logout --force");
+	play_alert_sound();
 	system("kill -9 -1");
 }
 
@@ -47,10 +49,13 @@ void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box) {
 		options = get_shutdown_timer_options(timer_box);
 		g_assert(options);
 		snprintf(command, COMMAND_SIZE, "shutdown -r %s", options);
+		notify_user("Rebooting in %s minutes", options);
+		play_alert_sound();
 		g_free(options);
         system(command);
 	} else {
 		// If timer is not checked
+		play_alert_sound();
 		system("shutdown now --reboot");
 	}
 	g_free(command);
@@ -70,10 +75,12 @@ void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
 		options = get_shutdown_timer_options(timer_box);
 		g_assert(options);
 		snprintf(command, COMMAND_SIZE, "shutdown %s", options);
+		notify_user("Shuting down in %s minutes", options);
+		play_alert_sound();
 		g_free(options);
         system(command);
 	} else {
-		// If timer is not checked
+		play_alert_sound();
 		system("shutdown now");
 	}
 	g_free(command);

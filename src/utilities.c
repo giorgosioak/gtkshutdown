@@ -16,7 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <canberra.h>
 #include <gtk/gtk.h>
+#include <libnotify/notify.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -78,4 +80,24 @@ GtkWidget* find_child(GtkWidget* parent, const gchar* name) {
     }
 
     return NULL;
+}
+
+void notify_user(char const* message, char* options) {
+    GError* err = NULL;
+    char* body_message = malloc(80 * sizeof(char));
+    snprintf(body_message, 80 * sizeof(char), message, options);
+    NotifyNotification* notif = notify_notification_new("Shutdown Manager",body_message,"system-shutdown");
+    notify_notification_show(notif,&err);
+    g_free(body_message);
+}
+
+void play_alert_sound() {
+    ca_context* alert;
+	ca_context_create(&alert);
+	ca_context_play(alert, 0,
+		CA_PROP_EVENT_ID, "bell",
+        // CA_PROP_MEDIA_FILENAME, "/usr/share/sounds/gtkshutdown/alert.wav"
+		CA_PROP_EVENT_DESCRIPTION, "gtkshutdown alert",
+		NULL);
+	g_usleep(2000000);
 }

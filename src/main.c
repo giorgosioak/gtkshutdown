@@ -17,6 +17,7 @@
  */
 
 #include <gtk/gtk.h>
+#include <libnotify/notify.h>
 #include "callbacks.h"
 
 int main(int argc, char *argv[])
@@ -26,6 +27,9 @@ int main(int argc, char *argv[])
 
     // init gtk lib
     gtk_init(&argc, &argv);
+
+    // init notify system
+    notify_init("gtkshutdown");
 
     // add glade files
     builder = gtk_builder_new();
@@ -49,5 +53,6 @@ int main(int argc, char *argv[])
 // called when window is closed
 void on_window_main_destroy()
 {
+    notify_uninit();
     gtk_main_quit();
 }

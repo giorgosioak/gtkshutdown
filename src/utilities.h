@@ -25,3 +25,9 @@ char* get_shutdown_timer_options (GtkWidget *timer_box);
  * thanks to Darius Kucinskas ( @dkucinskas ) */
 GtkWidget* find_child(GtkWidget* parent, const gchar* name);
 #endif
+
+/* Notifies user via libnotify */
+void notify_user(char const* message, char* options);
+
+/* Play an alert sound via libcanberra */
+void play_alert_sound();
