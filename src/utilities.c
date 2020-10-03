@@ -53,7 +53,7 @@ char* get_shutdown_timer_options (GtkWidget *timer_box){
 
 // find child in container
 GtkWidget* find_child(GtkWidget* parent, const gchar* name) {
-    if (g_strcasecmp(gtk_widget_get_name((GtkWidget*)parent), (gchar*)name) == 0) { 
+    if (g_ascii_strcasecmp(gtk_widget_get_name((GtkWidget*)parent), (gchar*)name) == 0) { 
         return parent;
     }
 
