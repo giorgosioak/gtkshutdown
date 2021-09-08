@@ -7,13 +7,18 @@ A Shutdown Manager based on GTK+ 3
 
 #### Compile: ####
 
-Ubuntu/Debian dependency: $<code>sudo apt install libgtk-3-dev libnotify-dev libcanberra-dev</code>
+Ubuntu/Debian dependencies: $ <code>sudo apt install libgtk-3-dev libnotify-dev libcanberra-dev</code>
 
-$<code>make</code>
+$ <code>make</code>
 
 #### Run: ####
 
-$<code>make run</code>  or  $<code>cd build; ./gtkshutdown</code>
+$ <code>make run</code>  or  $ <code>cd build; ./gtkshutdown</code>
+
+
+#### Install: ####
+
+$ <code>make install</code>
 
 
 ## Notes ##
