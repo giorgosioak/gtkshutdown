@@ -29,8 +29,8 @@ size_t COMMAND_SIZE = 80 * sizeof(char);
 
 // called when logout button clicked
 void logout_clicked_cb (GtkButton *logout, gpointer user_data) {
-    //g_print("clicked\n");
-    //system("gnome-session-quit --logout --force");
+	//g_print("clicked\n");
+	//system("gnome-session-quit --logout --force");
 	play_alert_sound();
 	system("kill -9 -1");
 }
@@ -52,7 +52,7 @@ void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box) {
 		notify_user("Rebooting in %s minutes", options);
 		play_alert_sound();
 		g_free(options);
-        system(command);
+		system(command);
 	} else {
 		// If timer is not checked
 		play_alert_sound();
@@ -78,7 +78,7 @@ void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
 		notify_user("Shuting down in %s minutes", options);
 		play_alert_sound();
 		g_free(options);
-        system(command);
+		system(command);
 	} else {
 		play_alert_sound();
 		system("shutdown now");
@@ -88,14 +88,10 @@ void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
 
 // called when timer button clicked
 void timer_clicked_cb (GtkButton *shutdown, gpointer user_data) {
-    //system("shutdown now");
+	//system("shutdown now");
 }
 
 // called when timer check button is toggled
 void enable_options (GtkWidget *timer, GtkWidget *timer_options) {
-	if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer))) {
-		gtk_widget_set_sensitive(timer_options,1);
-	} else {
-		gtk_widget_set_sensitive(timer_options,0);
-	}
+	gtk_widget_set_sensitive(timer_options,!!gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer)));
 }
