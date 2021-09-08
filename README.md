@@ -35,4 +35,4 @@ $<code>make run</code>  or  $<code>cd build; ./gtkshutdown</code>
 
 George Ioakeimidis <[giorgosioak95 at gmail.com](mailto:giorgosioak95@gmail.com?Subject=gtkshutdown)>
 
-###### _This program is developed on Antergos Linux in C and GTK+3 using [Glade](https://glade.gnome.org/) for ui._ ######
+###### _This program is developed on Arch Linux in C and GTK+3 using [Glade](https://glade.gnome.org/) for ui._ ######
