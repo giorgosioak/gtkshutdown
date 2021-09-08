@@ -15,6 +15,13 @@ run: all
 	cd build; ./gtkshutdown
 
 rebuild: clean all
+
+install: all
+	sudo cp build/gtkshutdown /usr/bin/gtkshutdown
+	sudo chmod +x /usr/bin/gtkshutdown
+
+uninstall:
+	sudo rm -f /usr/bin/gtkshutdown
 	
 clean:
 	rm -rf build data/gtkshutdown.c
