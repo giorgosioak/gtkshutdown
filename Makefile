@@ -2,6 +2,9 @@
 # This is a makefile for gtkshutdown
 # URL < https://github.com/giorgosioak/gtkshutdown >
 
+DESTDIR ?=
+PREFIX ?= /usr
+
 CFLAGS=-Wall `pkg-config --cflags --libs gtk+-3.0 libnotify libcanberra` -export-dynamic -no-pie
 
 all:
@@ -17,11 +20,10 @@ run: all
 rebuild: clean all
 
 install: all
-	sudo cp build/gtkshutdown /usr/bin/gtkshutdown
-	sudo chmod +x /usr/bin/gtkshutdown
-
+	install -Dm 755 build/gtkshutdown $(DESTDIR)/$(PREFIX)/bin/gtkshutdown
+	
 uninstall:
-	sudo rm -f /usr/bin/gtkshutdown
+	rm -f $(DESTDIR)/$(PREFIX)/bin/gtkshutdown
 	
 clean:
 	rm -rf build data/gtkshutdown.c
