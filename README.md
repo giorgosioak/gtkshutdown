@@ -16,9 +16,12 @@ $ <code>make</code>
 $ <code>make run</code>  or  $ <code>cd build; ./gtkshutdown</code>
 
 
-#### Install: ####
+#### Install / Uninstall: ####
 
-$ <code>make install</code>
+| System wide | DESTDIR example |
+| ----------- | --------------- |
+| $ <code>sudo make install</code> | $ <code>make DESTDIR=/home/username install</code> |
+| $ <code>sudo make uninstall</code> | $ <code>make DESTDIR=/home/username uninstall</code> |
 
 
 ## Notes ##
