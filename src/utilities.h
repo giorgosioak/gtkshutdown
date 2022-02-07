@@ -21,6 +21,8 @@
 // transform hours and minutes to shutdown options format
 char* get_shutdown_timer_options (GtkWidget *timer_box);
 
+int get_shutdown_timer_options_in_minutes (GtkWidget *timer_box);
+
 /* find child in container
  * thanks to Darius Kucinskas ( @dkucinskas ) */
 GtkWidget* find_child(GtkWidget* parent, const gchar* name);

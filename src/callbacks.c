@@ -61,6 +61,32 @@ void restart_clicked_cb (GtkButton *restart, GtkWidget *timer_box) {
 	g_free(command);
 }
 
+// called when sleep button clicked
+void sleep_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
+
+	int timeInMins = 0;
+	char* options = malloc(OPTIONS_SIZE);
+	char* command = malloc(COMMAND_SIZE);
+
+	// Get timer
+	GtkWidget *timer = find_child(timer_box,"timer");
+
+	// If timer is checked
+	if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(timer))) {
+		timeInMins = get_shutdown_timer_options_in_minutes(timer_box);
+		g_assert(timeInMins > 0);
+		snprintf(command, COMMAND_SIZE, "systemd-run --user --on-active=%dmin /bin/systemctl suspend", timeInMins);
+		sprintf(options,"%d",timeInMins);
+		notify_user("System will halt in %s minutes", options);
+		play_alert_sound();
+		system(command);
+	} else {
+		play_alert_sound();
+		system("systemctl suspend");
+	}
+	g_free(command);
+}
+
 // called when shutdown button clicked
 void shutdown_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
 

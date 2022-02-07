@@ -12,6 +12,11 @@
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="stock">gtk-missing-image</property>
+  </object>
   <object class="GtkImage" id="logout_img">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -97,6 +102,20 @@
               </packing>
             </child>
             <child>
+              <object class="GtkButton" id="sleep">
+                <property name="label" translatable="yes">Sleep</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <signal name="clicked" handler="sleep_clicked_cb" object="timer_box" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="shutdown">
                 <property name="label" translatable="yes">Power Off</property>
                 <property name="visible">True</property>
@@ -110,7 +129,7 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
