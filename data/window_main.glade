@@ -12,11 +12,6 @@
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
-  <object class="GtkImage" id="image1">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="stock">gtk-missing-image</property>
-  </object>
   <object class="GtkImage" id="logout_img">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -43,6 +38,12 @@
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="stock">gtk-quit</property>
+    <property name="icon_size">6</property>
+  </object>
+  <object class="GtkImage" id="sleep_img">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="stock">gtk-media-pause</property>
     <property name="icon_size">6</property>
   </object>
   <object class="GtkWindow" id="window_main">
@@ -107,6 +108,9 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <property name="image">sleep_img</property>
+                <property name="image-position">top</property>
+                <property name="always-show-image">True</property>
                 <signal name="clicked" handler="sleep_clicked_cb" object="timer_box" swapped="no"/>
               </object>
               <packing>
