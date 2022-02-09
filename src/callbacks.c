@@ -79,6 +79,7 @@ void sleep_clicked_cb (GtkButton *shutdown, GtkWidget *timer_box) {
 		sprintf(options,"%d",timeInMins);
 		notify_user("System will halt in %s minutes", options);
 		play_alert_sound();
+		g_free(options);
 		system(command);
 	} else {
 		play_alert_sound();
