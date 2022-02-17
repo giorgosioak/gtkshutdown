@@ -19,6 +19,7 @@
 #include <canberra.h>
 #include <gtk/gtk.h>
 #include <libnotify/notify.h>
+#include <time.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,6 +52,35 @@ char* get_shutdown_timer_options (GtkWidget *timer_box){
     } else {
         return g_strdup_printf("%d:%d", at_hours, at_minutes);
     }
+}
+
+int get_shutdown_timer_options_in_minutes (GtkWidget *timer_box) {
+    char* ret = malloc( 64 * sizeof(char) );        memset(ret, 0, 64);
+    char* hours = malloc( 20 * sizeof(char) );      memset(hours, 0, 20);
+    char* minutes = malloc( 20 * sizeof(char) );    memset(minutes, 0, 20);
+    time_t T = time(NULL);
+    struct tm time = *localtime(&T);
+
+    // Get (GtkGrid) timer_options
+    GtkWidget *timer_options = find_child(timer_box,"timer_options");
+
+    // Get (GtkRadioButton) radio_in
+    GtkWidget *radio_in = find_child(timer_options,"radio_in");
+
+    // Get hours and minutes values from GtkSpinButton
+    int in_hours = gtk_spin_button_get_value( (GtkSpinButton *) find_child(timer_options,"in_hours"));
+    int in_minutes = gtk_spin_button_get_value( (GtkSpinButton *) find_child(timer_options,"in_minutes"));
+    int at_hours = gtk_spin_button_get_value( (GtkSpinButton *) find_child(timer_options,"at_hours"));
+    int at_minutes = gtk_spin_button_get_value( (GtkSpinButton *) find_child(timer_options,"at_minutes"));
+
+    // Check if radio_in is active. If radio_in is not active then radio_at is active
+    if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(radio_in))) {
+        return in_hours * 60 + in_minutes;
+    } else {
+        int system_time_mins = time.tm_hour * 60 + time.tm_min;
+        int selected_time_mins = at_hours * 60 + at_minutes;
+        return selected_time_mins - system_time_mins;
+    }    
 }
 
 // find child in container
